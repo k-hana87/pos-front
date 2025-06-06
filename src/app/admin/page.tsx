@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 export default function AdminPage() {
   const [CODE, setCODE] = useState('');
   const [NAME, setNAME] = useState('');
@@ -15,7 +17,7 @@ export default function AdminPage() {
       return;
     }
 
-    const response = await fetch('http://localhost:8000/products', {
+    const response = await fetch(`${API_BASE_URL}/products`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

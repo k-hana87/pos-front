@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 type Item = {
   CODE: string;
   NAME: string;
@@ -18,7 +20,7 @@ export default function Home() {
 
   const handleFetchItem = async () => {
     try {
-      const res = await fetch(`http://localhost:8000/products/${code}`);
+      const res = await fetch(`${API_BASE_URL}/products/${code}`);
       if (res.status === 404) {
         setName('商品がマスタ未登録です');
         setPrice(null);
@@ -54,7 +56,7 @@ export default function Home() {
         PRD_PRICE: item.PRICE,
       }));
 
-      const res = await fetch('http://localhost:8000/trades', {
+      const res = await fetch(`${API_BASE_URL}/trades`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
