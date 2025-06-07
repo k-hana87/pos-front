@@ -31,7 +31,7 @@ export default function Home() {
       const data = await res.json();
       setName(data.NAME);
       setPrice(data.PRICE);
-    } catch (error) {
+    } catch {
       setName('通信エラー');
       setPrice(null);
     }
@@ -77,7 +77,7 @@ export default function Home() {
       } else {
         alert('購入処理に失敗しました');
       }
-    } catch (err) {
+    } catch {
       alert('購入エラー');
     }
   };
