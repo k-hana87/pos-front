@@ -88,7 +88,7 @@ export default function Home() {
         <h1 className="text-2xl font-bold">POSアプリ</h1>
         <div className="w-1/4 ml-auto">
           <a
-            href="/admin"
+            href="/products"
             className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition"
           >
             管理者ページ
