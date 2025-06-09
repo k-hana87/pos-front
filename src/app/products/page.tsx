@@ -11,6 +11,8 @@ export default function AdminPage() {
   const [PRICE, setPRICE] = useState('');
   const router = useRouter(); 
 
+  console.log("API_BASE_URL =", API_BASE_URL);
+
   const handleAdd = async () => {
     if (!NAME || !PRICE) {
       alert('商品名と単価を入力してください');
