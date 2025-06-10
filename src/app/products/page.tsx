@@ -19,6 +19,18 @@ export default function AdminPage() {
       return;
     }
 
+    //ここで送信するデータ（payload）を定義
+    const payload = {
+      CODE,
+      NAME,
+      PRICE: parseInt(PRICE),
+    };
+  
+    //デバッグ用ログを追加
+    console.log("送信データ（payload）:", payload);
+    
+
+    
     const response = await fetch(`${API_BASE_URL}/products`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
