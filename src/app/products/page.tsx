@@ -29,31 +29,64 @@ export default function AdminPage() {
     //デバッグ用ログを追加
     console.log("送信データ（payload）:", payload);
     
-
+    try {
+          console.log("fetch開始"); // ★追加
     
-    const response = await fetch(`${API_BASE_URL}/products`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        CODE,
-        NAME,
-        PRICE: parseInt(PRICE),
-      }),
-    });
-
-    if (response.ok) {
-      alert('商品を追加しました');
-      setCODE('');
-      setNAME('');
-      setPRICE('');
-    } else {
-      alert('追加に失敗しました');
+          const response = await fetch(`${API_BASE_URL}/products`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+    
+          console.log("fetch完了"); // ★追加
+          console.log("レスポンスステータス:", response.status); // ★追加
+    
+          const responseBody = await response.text(); // ★追加
+          console.log("レスポンスボディ:", responseBody); // ★追加
+    
+          if (response.ok) {
+            alert('商品を追加しました');
+            setCODE('');
+            setNAME('');
+            setPRICE('');
+          } else {
+            alert('追加に失敗しました');
+          }
+    
+        } catch (error) {
+          console.error("fetchエラー:", error); // ★追加
+          alert('通信エラーが発生しました'); // ★追加
+        }
+      };
+    
+      const handleBack = () => {
+        router.push('/');
+      };
     }
-  };
+    
+  //   const response = await fetch(`${API_BASE_URL}/products`, {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({
+  //       CODE,
+  //       NAME,
+  //       PRICE: parseInt(PRICE),
+  //     }),
+  //   });
 
-  const handleBack = () => {
-    router.push('/');
-  };
+  //   if (response.ok) {
+  //     alert('商品を追加しました');
+  //     setCODE('');
+  //     setNAME('');
+  //     setPRICE('');
+  //   } else {
+  //     alert('追加に失敗しました');
+  //   }
+  // };
+
+  // const handleBack = () => {
+  //   router.push('/');
+  // };
 
   return (
     <main className="bg-white text-black p-6 max-w-2xl mx-auto">
