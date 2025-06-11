@@ -62,7 +62,7 @@ export default function AdminPage() {
       const handleBack = () => {
         router.push('/');
       };
-    }
+
     
   //   const response = await fetch(`${API_BASE_URL}/products`, {
   //     method: 'POST',
